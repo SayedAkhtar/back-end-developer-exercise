@@ -6,8 +6,8 @@
         <small></small>
         <hr>
         <img src="{{asset('images/'.$post->featured_image)}}" alt="" height="300" width="300">
-        <p>
-            {{$post->post}}
-        </p>
+        <div>
+            {!! $post->post !!}
+        </div>
    </div>
 @endsection

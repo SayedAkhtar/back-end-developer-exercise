@@ -7,8 +7,12 @@
         <form action="{{url()->current()}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
-                <input type="text" class="form-control" id="postTitle" aria-describedby="emailHelp" placeholder="Enter Title" name="post_title">
+                <label for="postTitle">Title</label>
+                <input type="text" class="form-control" id="postTitle" aria-describedby="" placeholder="Enter Title" name="post_title">
+            </div>
+            <div class="form-group">
+                <label for="postSubject">Subject</label>
+                <input type="text" class="form-control" id="postSubject" aria-describedby="" placeholder="Enter Subject" name="post_subject">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Post Body</label>

@@ -11,7 +11,7 @@
       <img class="card-img-top" src="{{asset('images/'.$post->featured_image)}}" alt="Card image cap">
       <div class="card-body">
         <h2 class="card-title text-capitalize">{{$post->title}}</h2>
-        <p class="card-text">{{$post->post}}</p>
+        <p class="card-text">{{ $post->subject }}</p>
           <a href="{{$user->find($post->userid)->user_name}}/{{$post->id}}" class="btn btn-primary">Read More →</a>
       </div>
       <div class="card-footer text-muted">

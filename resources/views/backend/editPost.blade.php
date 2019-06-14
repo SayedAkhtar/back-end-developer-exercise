@@ -14,6 +14,10 @@
                 <input type="text" class="form-control" id="postTitle" aria-describedby="emailHelp" placeholder="Enter Title" name="post_title" value={{$post->title}}>
             </div>
             <div class="form-group">
+                <label for="postSubject">Title</label>
+                <input type="text" class="form-control" id="postSubject" aria-describedby="" placeholder="Enter Subject" name="post_subject" value="{{$post->subject}}">
+            </div>
+            <div class="form-group">
                 <label for="exampleInputEmail1">Post Body</label>
                 <textarea class="form-control" id="postBody" rows="3" name="post_body">{{$post->post}}</textarea>
             </div>

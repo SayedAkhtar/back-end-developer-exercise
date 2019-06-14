@@ -43,6 +43,7 @@ class backendController extends Controller
         $id = Auth::user()->id;
         $post = new Post;
         $post->title = $request->post_title; 
+        $post->subject = $request->post_subject; 
         $post->post = $request->post_body; 
         $post->userid = $id; 
         if($request->hasFile('image')){
@@ -53,7 +54,7 @@ class backendController extends Controller
             $post->featured_image = $filename;
         }
         $post->save();
-        return $request;
+        return back();
     }
 
     public function postEditIndex($id)
@@ -69,6 +70,7 @@ class backendController extends Controller
         $id = Auth::user()->id;
         $post = Post::find($postid);
         $post->title = $request->post_title; 
+        $post->subject = $request->post_subject; 
         $post->post = $request->post_body; 
         $post->userid = $id; 
         if($request->hasFile('image')){
