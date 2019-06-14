@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Post;
 use App\User;
+use App\Comments;
 
 class frontendController extends Controller
 {
@@ -17,7 +18,7 @@ class frontendController extends Controller
     public function index()
     {
         //
-        $posts = Post::paginate(8);
+        $posts = Post::latest()->paginate(8);
         $user = User::all();
         return View('frontend.post', ['posts' =>$posts, 'user'=>$user]);
     }
@@ -54,13 +55,15 @@ class frontendController extends Controller
         //
         $post = Post::find($postid);
         $user = User::find($post->userid);
-        return view('frontend.single-post',['post'=>$post, 'user'=>$user]);
+        $comments = Comments::where('postid',$postid)->latest()->get();
+        // return [$postid, $comments];
+        return view('frontend.single-post',['post'=>$post, 'user'=>$user, 'comments'=> $comments]);
     }
 
     public function showAllPost($username)
     {
         //
-        $userid = User::where('email',$username)->first()->id;
+        $userid = User::where('user_name',$username)->first()->id;
         $post = Post::where('userid', $userid)->paginate(8);
         $user = User::all();
         return View('frontend.post', ['posts' =>$post, 'user'=>$user]);

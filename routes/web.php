@@ -21,6 +21,10 @@ Route::post('/admin/create-post', 'backendController@createPost');
 Route::get('/admin/edit-post/{id}', 'backendController@postEditIndex');
 Route::post('/admin/edit-post/{id}', 'backendController@editPost');
 Route::get('/admin/delete/{id}', 'backendController@destroyPost');
+Route::post('/commentPost', 'commentsController@create');
+Route::post('/commentEdit/{id}', 'commentsController@edit');
+Route::post('/commentDelete/{id}', 'commentsController@delete');
+
 
 Route::get('/{username}/{postid}', 'frontendController@showPost');
 Route::get('/{username}', 'frontendController@showAllPost');

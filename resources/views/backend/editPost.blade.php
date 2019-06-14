@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" id="postSubject" aria-describedby="" placeholder="Enter Subject" name="post_subject" value="{{$post->subject}}">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Post Body</label>
+                <label >Post Body</label>
                 <textarea class="form-control" id="postBody" rows="3" name="post_body">{{$post->post}}</textarea>
             </div>
             <div class="form-group">
@@ -30,6 +30,15 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

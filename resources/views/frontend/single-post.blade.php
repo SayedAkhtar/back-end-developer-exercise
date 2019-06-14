@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('post')
-   <div class="container">
+   <div class="container border">
         <h1>{{$post->title}}</h1>
         <small>Published By <b class="text-capitalize">{{$user->name}}</b> at {{$post->updated_at}}</small>
         <small></small>
@@ -10,4 +10,6 @@
             {!! $post->post !!}
         </div>
    </div>
+
+   @include('frontend.comment',['post'=> $post, 'user'=>$user, 'comments'=> $comments])
 @endsection

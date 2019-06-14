@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 
 class backendController extends Controller
@@ -40,9 +42,16 @@ class backendController extends Controller
     public function createPost(Request $request)
     {
         //
+        $request->validate([
+            'post_title' => ['required', 'string', 'max:255'],
+            'post_subject' => ['required', 'string', 'max:255'],
+            'post_body' => ['required', 'string'],
+            'image' => ['required', 'image', 'min:8','mimes:jpeg,jpg,png,gif|required|max:10000'],
+        ]);
         $id = Auth::user()->id;
         $post = new Post;
         $post->title = $request->post_title; 
+        $post->slug = Str::slug($request->post_title).'-'.Str::random(3); 
         $post->subject = $request->post_subject; 
         $post->post = $request->post_body; 
         $post->userid = $id; 
@@ -67,6 +76,12 @@ class backendController extends Controller
     public function editPost(Request $request,$postid)
     {
         //
+        $request->validate([
+            'post_title' => ['required', 'string', 'max:255'],
+            'post_subject' => ['required', 'string', 'max:255'],
+            'post_body' => ['required', 'string'],
+            'image' => ['required', 'image', 'min:8','mimes:jpeg,jpg,png,gif|required|max:10000'],
+        ]);
         $id = Auth::user()->id;
         $post = Post::find($postid);
         $post->title = $request->post_title; 

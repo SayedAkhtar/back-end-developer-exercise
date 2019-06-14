@@ -15,8 +15,8 @@
           <a href="{{$user->find($post->userid)->user_name}}/{{$post->id}}" class="btn btn-primary">Read More →</a>
       </div>
       <div class="card-footer text-muted">
-        Posted on January 1, 2017 by
-        <a href="#">Start Bootstrap</a>
+        Posted on {{$post->created_at}} by
+        <a href="#">{{$user->find($post->userid)->name}}</a>
       </div>
   </div>
   @endforeach
